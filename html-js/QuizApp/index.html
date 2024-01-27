@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Quiz App</title>
+		<style>
+			li {
+				list-style: none;
+			}
+			.quiz-body {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Quiz App</h1>
+		<div class="quiz-body">
+			<div
+				class="question"
+				id="question1">
+				<h4>What React uses to update dynamic content?</h4>
+				<ul>
+					<li>
+						<input
+							type="radio"
+							value="actualDOM"
+							name="reactdom" />Actual DOM
+					</li>
+					<li>
+						<input
+							type="radio"
+							value="redux"
+							name="reactdom" />Redux
+					</li>
+					<li>
+						<input
+							type="radio"
+							value="virtualDOM"
+							name="reactdom" />Virtual DOM
+					</li>
+					<li>
+						<input
+							type="radio"
+							value="render"
+							name="reactdom" />Render
+					</li>
+				</ul>
+			</div>
+			<div
+				class="question"
+				id="question2">
+				<h4>Node js is based on which engine?</h4>
+				<ul>
+					<li>
+						<input
+							type="radio"
+							value="chakra"
+							name="nodejs" />Chakra
+					</li>
+					<li>
+						<input
+							type="radio"
+							value="spidermonkey"
+							name="nodejs" />SpiderMonkey
+					</li>
+					<li>
+						<input
+							type="radio"
+							value="v8"
+							name="nodejs" />V8
+					</li>
+					<li>
+						<input
+							type="radio"
+							value="firefox"
+							name="nodejs" />Firefox
+					</li>
+				</ul>
+			</div>
+			<div
+				class="question"
+				id="question3">
+				<h4>
+					What is the order in the following(padding: 20px 10px 40px 30px)?
+				</h4>
+				<ul>
+					<li>
+						<input
+							type="radio"
+							value="topbottomleftright"
+							name="css" />top bottom left right
+					</li>
+					<li>
+						<input
+							type="radio"
+							value="toprightbottomleft"
+							name="css" />top right bottom left
+					</li>
+					<li>
+						<input
+							type="radio"
+							value="topbottomrightleft"
+							name="css" />top bottom right left
+					</li>
+					<li>
+						<input
+							type="radio"
+							value="topleftrightbottom"
+							name="css" />top left right bottom
+					</li>
+				</ul>
+			</div>
+		</div>
+		<button id="btn">Submit</button>
+		<p id="para">Your Score is: <span id="score">0</span></p>
+
+		<script>
+			let questions = document.querySelectorAll('.question');
+			let btn = document.getElementById('btn');
+			let scoreDisplay = document.getElementById('score');
+
+			btn.addEventListener('click', score);
+
+			let correctAnswers = {
+				question1: 'virtualDOM',
+				question2: 'v8',
+				question3: 'toprightbottomleft',
+			};
+
+			function score() {
+				let score = 0;
+
+				questions.forEach((question) => {
+					let radios = question.querySelectorAll('input[type="radio"]');
+					radios.forEach((radio) => {
+						if (radio.checked && radio.value === correctAnswers[question.id]) {
+							score++;
+						}
+					});
+				});
+
+				scoreDisplay.innerText = score;
+			}
+		</script>
+	</body>
+</html>

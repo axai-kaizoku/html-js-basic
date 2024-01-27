@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			input {
+				margin: 1rem;
+			}
+			#main {
+				margin: 4rem;
+			}
+			#slct {
+				margin: 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<h1>Marriage eligibility</h1>
+			<label for="">Name:</label>
+			<input
+				type="text"
+				id="input1" />
+			<br />
+			<label for="">Age:</label>
+
+			<input
+				type="text"
+				id="input2" />
+			<br />
+
+			<label for="">Gender:</label>
+
+			<select
+				name="gender"
+				id="slct">
+				<option value="Male">Male</option>
+				<option value="Female">Female</option>
+			</select>
+			<br />
+
+			<button id="btn">Submit</button>
+			<p id="para">Check your marriage eligibility</p>
+		</div>
+		<script src="./index.js">
+						let name = document.getElementById('input1');
+			let age = document.getElementById('input2');
+			let gender = document.getElementById('slct');
+			let btn = document.getElementById('btn');
+			let para = document.getElementById('para');
+
+			btn.addEventListener('click', getStatus);
+
+			function getStatus() {
+				var inputName = name.value.trim();
+				var inputAge = parseInt(age.value);
+				var inputGender = gender.value;
+
+				if (!isNaN(inputAge)) {
+					if (inputGender === 'Male' && inputAge < 21) {
+						para.innerText = `${inputName}, Your age is not eligible for Marriage. The valid age for Male is 21`;
+					} else if (inputGender === 'Male' && inputAge >= 21) {
+						para.innerText = `${inputName}, Your Age is eligible for Marriage`;
+					} else if (inputGender === 'Female' && inputAge < 18) {
+						para.innerText = `${inputName}, Your age is not eligible for Marriage. The valid age for Female is 18`;
+					} else if (inputGender === 'Female' && inputAge >= 18) {
+						para.innerText = `${inputName}, Your Age is eligible for Marriage`;
+					}
+				} else if (inputName === '' || inputAge === '') {
+					para.innerText = 'Please Enter Valid Values in Input Fields';
+				} else {
+					para.innerText = 'Please enter valid age';
+				}
+			}
+		</script>
+	</body>
+</html>
