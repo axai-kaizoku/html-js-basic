@@ -1,0 +1,26 @@
+.temp {
+	background-color: bisque;
+	width: 300px;
+	height: 400px;
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10rem;
+}
+
+.temp-div {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color: white;
+	font-size: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn-div button {
+	border-radius: 50%;
+}
