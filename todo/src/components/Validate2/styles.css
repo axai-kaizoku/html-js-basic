@@ -1,0 +1,12 @@
+.validate input {
+	margin: 1rem;
+	padding: 0.2rem;
+}
+
+.validate {
+	text-align: center;
+}
+
+.validate button {
+	cursor: pointer;
+}
