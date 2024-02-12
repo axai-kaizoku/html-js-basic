@@ -1,19 +1,27 @@
 import './App.css';
-// import Temp from './components/Temp';
-// import TemperatureControl from './components/TemperatureControl';
+import TemperatureControl from './components/TemperatureControl';
 import Time from './components/Time';
-// import { useState } from 'react';
-// import Todo from './components/Todo/Todo';
+import Todo from './components/Todo/Todo';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
 	return (
-		<div className="App">
-			{/* <Todo /> */}
-			{/* Hello React App */}
-			{/* <TemperatureControl /> */}
-			{/* <Temp /> */}
-			<Time />
-		</div>
+		<>
+			<Routes>
+				<Route
+					path="/"
+					element={<Time />}
+				/>
+				<Route
+					path="/todo"
+					element={<Todo />}
+				/>
+				<Route
+					path="/temp"
+					element={<TemperatureControl />}
+				/>
+			</Routes>
+		</>
 	);
 }
 

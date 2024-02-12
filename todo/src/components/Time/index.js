@@ -11,6 +11,18 @@ const Time = () => {
 		return () => clearInterval(intervalId);
 	}, []);
 
+	// if ('geolocation' in navigator) {
+	// 	let location;
+	// 	navigator.geolocation.getCurrentPosition(function (position) {
+	// 		let lat = position.coords.latitude;
+	// 		let long = position.coords.longitude;
+	// 		location = [lat, long];
+	// 	});
+	// 	// console.log(location);
+	// } else {
+	// 	console.log(':(');
+	// }
+
 	const hrs = time.getHours();
 	const min = time.getMinutes();
 	const sec = time.getSeconds();
