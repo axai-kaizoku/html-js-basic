@@ -37,3 +37,11 @@
     cursor: pointer;
     font-size: 1.5rem;
 }
+
+.dropdown li:hover {
+    background-color: rgb(231, 241, 244);
+}
+
+.dropdown .active {
+    background-color: rgb(231, 241, 244);
+}
