@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Countdown Timer</title>
+		<style>
+			body {
+				font-family: sans-serif;
+			}
+			h1 {
+				text-align: center;
+			}
+			p {
+				font-size: 2rem;
+			}
+			#plus,
+			#minus {
+				margin: 0.2rem;
+				background-color: transparent;
+				border: 0px;
+				border-radius: 50%;
+				box-shadow: 1px 0px 5px black;
+			}
+			.time-div {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Countdown Timer</h1>
+		<div class="time-div">
+			<p id="time">00:00</p>
+			<div><button id="minus">v</button><button id="plus">^</button></div>
+			<button id="start">Start</button>
+		</div>
+		<script>
+			let time = document.getElementById('time');
+			let minusbtn = document.getElementById('minus');
+			let plusbtn = document.getElementById('plus');
+			let start = document.getElementById('start');
+
+			plusbtn.addEventListener('click', increase);
+			minusbtn.addEventListener('click', decrease);
+			start.addEventListener('click', runTimer);
+
+			let seconds = 0;
+			let minutes = 0;
+			let intervalId;
+
+			function increase() {
+				seconds += 1;
+				if (seconds > 59) {
+					minutes += 1;
+					seconds = 0;
+				}
+				updateTimeDisplay();
+			}
+
+			function decrease() {
+				if (minutes > 0 || seconds > 0) {
+					seconds -= 1;
+					if (seconds < 0) {
+						minutes -= 1;
+						seconds = 59;
+					}
+					updateTimeDisplay();
+				}
+			}
+
+			function runTimer() {
+				if (intervalId) {
+					clearInterval(intervalId);
+				}
+
+				intervalId = setInterval(() => {
+					if (minutes === 0 && seconds === 0) {
+						clearInterval(intervalId);
+						alert('Timer finished!');
+					} else {
+						if (seconds === 0) {
+							minutes -= 1;
+							seconds = 59;
+						} else {
+							seconds -= 1;
+						}
+						updateTimeDisplay();
+					}
+				}, 1000);
+			}
+
+			function updateTimeDisplay() {
+				time.innerText = `${padZero(minutes)}:${padZero(seconds)}`;
+			}
+
+			function padZero(num) {
+				return num.toString().padStart(2, '0');
+			}
+		</script>
+	</body>
+</html>

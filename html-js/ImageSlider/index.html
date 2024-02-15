@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				background-color: rgb(67, 67, 67);
+				color: white;
+			}
+			.image-box {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			.image {
+				width: 200px;
+				height: 200px;
+			}
+			.image img {
+				width: 200px;
+				height: 200px;
+				background-position: center;
+				object-fit: contain;
+			}
+		</style>
+	</head>
+	<body>
+		<h2 style="text-align: center">Image Slider</h2>
+		<div class="image-box">
+			<div class="image">
+				<div id="slide">
+					<img
+						src="//picsum.photos/id/237/300/300"
+						alt="" />
+				</div>
+				<div id="slide">
+					<img
+						src="//picsum.photos/id/223/300/300"
+						alt="" />
+				</div>
+				<div id="slide">
+					<img
+						src="//picsum.photos/id/231/300/300"
+						alt="" />
+				</div>
+			</div>
+			<div style="margin: 1rem">
+				<button id="left"><</button> <button id="right">></button>
+			</div>
+		</div>
+		<script src="index.js"></script>
+	</body>
+</html>

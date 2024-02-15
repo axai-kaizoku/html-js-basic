@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="main">
+			<h1>Click to find your Lucky Day</h1>
+			<input
+				type="text"
+				value=""
+				id="input" />
+			<button id="btn">Click!</button>
+			<p id="para">Hello This is para</p>
+		</div>
+		<script src="./main.js">
+						let btn = document.getElementById('btn');
+			let input = document.getElementById('input');
+			let para = document.getElementById('para');
+
+			btn.addEventListener('click', LuckyDay);
+
+			function LuckyDay() {
+				var x = input.value.trim();
+				var num = parseInt(x);
+				if (!isNaN(num)) {
+					let days = [
+						'Monday',
+						'Tuesday',
+						'Wednesday',
+						'Thursday',
+						'Friday',
+						'Saturday',
+						'Sunday',
+					];
+					let luckyDay = days[num % 7];
+					para.innerText = luckyDay;
+				} else {
+					console.log('Please Enter a Valid Number');
+				}
+			}
+		</script>
+	</body>
+</html>

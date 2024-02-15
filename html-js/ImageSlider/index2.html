@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<style>
+			#slider-container {
+				width: 300px;
+				overflow: hidden;
+				margin: 20px auto;
+			}
+
+			#slider {
+				display: flex;
+				transition: transform 0.5s ease-in-out;
+			}
+
+			.slide {
+				width: 100%;
+				box-sizing: border-box;
+			}
+
+			button {
+				margin-top: 10px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="slider-container">
+			<div id="slider">
+				<div class="slide">
+					<img
+						src="//picsum.photos/id/237/300/300"
+						alt="Image 1" />
+				</div>
+				<div class="slide">
+					<img
+						src="//picsum.photos/id/223/300/300"
+						alt="Image 2" />
+				</div>
+				<div class="slide">
+					<img
+						src="//picsum.photos/id/231/300/300"
+						alt="Image 3" />
+				</div>
+				<!-- Add more slides as needed -->
+			</div>
+		</div>
+
+		<button onclick="prevSlide()">Previous</button>
+		<button onclick="nextSlide()">Next</button>
+
+		<script>
+			const slider = document.getElementById('slider');
+			const slideWidth = document.querySelector('.slide').offsetWidth;
+			let currentIndex = 0;
+
+			function nextSlide() {
+				if (currentIndex < slider.children.length - 1) {
+					currentIndex++;
+				} else {
+					currentIndex = 0;
+				}
+				updateSlider();
+			}
+
+			function prevSlide() {
+				if (currentIndex > 0) {
+					currentIndex--;
+				} else {
+					currentIndex = slider.children.length - 1;
+				}
+				updateSlider();
+			}
+
+			function updateSlider() {
+				const newTransformValue = -currentIndex * slideWidth + 'px';
+				slider.style.transform = 'translateX(' + newTransformValue + ')';
+			}
+		</script>
+	</body>
+</html>

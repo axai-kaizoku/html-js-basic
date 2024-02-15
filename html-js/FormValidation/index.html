@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Form Validation</h1>
+		<input
+			type="text"
+			id="name"
+			placeholder="Name" />
+		<br />
+		<input
+			type="email"
+			id="email"
+			placeholder="Email" />
+		<br />
+		<input
+			type="text"
+			id="number"
+			placeholder="Number" />
+		<br />
+		<button id="submit">check</button>
+		<p id="para">Validate your details</p>
+		<script>
+			let name = document.getElementById('name');
+			let email = document.getElementById('email');
+			let number = document.getElementById('number');
+			let submit = document.getElementById('submit');
+			let para = document.getElementById('para');
+
+			submit.addEventListener('click', validate);
+			function validate() {
+				if (name.value.length > 4 && name.value.length !== '') {
+					let name = name.value;
+					para.innerText = 'Your details are valid';
+				} else {
+					para.innerText = 'Your details are invalid';
+				}
+
+				if (email.value.length > 0) {
+					let email = email.value;
+					para.innerText = 'Your details are valid';
+				} else {
+					para.innerText = 'Your details are invalid';
+				}
+
+				if (number.value.length === 10) {
+					let number = number.value;
+					para.innerText = 'Your details are valid';
+				} else {
+					para.innerText = 'Number should be 10 digit';
+				}
+				console.log(name.value, email.value, number.value);
+			}
+		</script>
+	</body>
+</html>

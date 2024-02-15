@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Simple Calculator!</h1>
+		<input
+			type="text"
+			id="input1"
+			placeholder="first number" />
+		<input
+			type="text"
+			id="input2"
+			placeholder="second number" />
+		<button id="plus">+</button>
+		<button id="minus">-</button>
+		<button id="mul">x</button>
+		<button id="div">/</button>
+		<p id="para"></p>
+		<script>
+			let para = document.getElementById('para');
+			let input1 = document.getElementById('input1');
+			let input2 = document.getElementById('input2');
+
+			function performOperation(operator) {
+				const num1 = Number(input1.value);
+				const num2 = Number(input2.value);
+
+				if (!isNaN(num1) && !isNaN(num2)) {
+					switch (operator) {
+						case 'plus':
+							para.innerText = num1 + num2;
+							break;
+						case 'minus':
+							para.innerText = num1 - num2;
+							break;
+						case 'mul':
+							para.innerText = num1 * num2;
+							break;
+						case 'div':
+							para.innerText = num1 / num2;
+							break;
+						default:
+							para.innerText = 'Invalid operation';
+					}
+				} else {
+					para.innerText = 'Enter valid numbers first!';
+				}
+			}
+
+			document
+				.getElementById('plus')
+				.addEventListener('click', () => performOperation('plus'));
+			document
+				.getElementById('minus')
+				.addEventListener('click', () => performOperation('minus'));
+			document
+				.getElementById('mul')
+				.addEventListener('click', () => performOperation('mul'));
+			document
+				.getElementById('div')
+				.addEventListener('click', () => performOperation('div'));
+		</script>
+	</body>
+</html>

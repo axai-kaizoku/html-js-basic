@@ -1,0 +1,48 @@
+Simple Calculator:
+
+Create a simple calculator that takes two numbers as input and allows the user to perform basic operations (addition, subtraction, multiplication, division).
+
+
+Email Validation:
+
+Create a form that takes an email address as input. Use JavaScript to validate if the entered email address is in a valid format.
+
+
+Password Strength Checker:
+
+Implement a password strength checker. The user enters a password, and the system provides feedback on the strength (weak, medium, strong).
+
+
+Image Slider:
+
+Create a simple image slider that displays a set of images with next and previous buttons to navigate between them.
+
+
+To-Do List with Local Storage:
+
+Build a to-do list that allows users to add, edit, and delete tasks. Store the tasks in the browser's local storage so that they persist even after the page is refreshed.
+
+
+Currency Converter:
+
+Develop a currency converter that converts an amount from one currency to another. Use a predefined set of exchange rates.
+
+
+Quiz App:
+
+Create a quiz app with multiple-choice questions. Allow users to select answers and display their score at the end.
+
+
+Weather App:
+
+Build a simple weather app that fetches and displays the current weather information based on the user's location or a manually entered city.
+
+
+Countdown Timer:
+
+Implement a countdown timer that allows users to set a specific time and counts down to zero.
+
+
+Form Validation:
+
+Develop a form with various input fields (text, email, number) and validate the form using JavaScript. Display error messages for invalid inputs.
