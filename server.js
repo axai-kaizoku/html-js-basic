@@ -4,7 +4,7 @@ const cors = require("cors")
 
 const app = express();
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 function GetWords (word)  {
     return SpellChecker.getCorrectionsForMisspelling(word);
@@ -22,10 +22,7 @@ app.post("/spell",(req,res) => {
     } catch (error) {
         res.status(404)
         console.log(error)
-
     }
-   
-
 })
 
 app.listen(8080, () => {

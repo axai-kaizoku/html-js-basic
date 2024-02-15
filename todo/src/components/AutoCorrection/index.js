@@ -3,8 +3,12 @@ import axios from 'axios'
 import "./styles.css"
 
 const AutoCorrection = () => {
+    
+    // State declarations
     const [word, setWord] = useState("");
     const [corrections, setCorrections] = useState([]);
+
+    // Event Handlers
     const onChange = async (event) => {
         const inputWord = event.target.value;
         setWord(inputWord);
@@ -13,6 +17,7 @@ const AutoCorrection = () => {
                 setCorrections([])
             } else {
                 await axios.post("http://localhost:8080/spell", { word: word }).then((res) => setCorrections(res.data))
+                console.log(corrections)
             }
         } catch (error) {
             console.log(error)
@@ -25,7 +30,7 @@ const AutoCorrection = () => {
     }
     return (
         <div className="suggestion-box">
-            <h1>Auto Correction Suggestion</h1>
+            <h1 className="heading">Auto Correction Suggestor</h1>
             <div className="box-inner">
                 <input type="text" placeholder="check" value={word} onChange={e => onChange(e)} className="suggestion-input" />
                 {word && (<div className="dropdown"><ul >
