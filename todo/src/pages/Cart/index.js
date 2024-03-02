@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { resetCart } from '../../redux/slices/Cart/cartSlice';
+import Layout from '../Layout';
 
 export default function Cart() {
 	const data = useSelector((state) => state.cart.value);
 	const dispatch = useDispatch();
 	return (
-		<div className="h-screen w-full">
+		<Layout>
 			<h1 className="text-center text-5xl font-thin">Cart</h1>
 			<div className="flex flex-col justify-center  h-full w-full">
 				<div className=" w-full h-full px-6 py-10 flex flex-row justify-start gap-10  flex-wrap">
@@ -33,6 +34,6 @@ export default function Cart() {
 
 				{/* {JSON.stringify(data)} */}
 			</div>
-		</div>
+		</Layout>
 	);
 }

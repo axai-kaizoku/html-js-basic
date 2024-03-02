@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { updateStore } from '../../redux/slices/Store/storeSlice';
 import { addToCart } from '../../redux/slices/Cart/cartSlice';
+import Layout from '../Layout';
 
 export default function Store() {
 	const data = useSelector((state) => state.store.value);
@@ -26,7 +27,7 @@ export default function Store() {
 	}, []);
 
 	return (
-		<div className="h-screen w-full">
+		<Layout className="h-full  w-full">
 			<h1 className="text-center text-5xl font-thin">Store Page</h1>
 			<div className="flex flex-row justify-center items-center h-full w-full">
 				<div className="p-10 px-24 flex flex-row justify-start gap-10 items-center flex-wrap">
@@ -44,6 +45,6 @@ export default function Store() {
 				</div>
 				{/* {JSON.stringify(data)} */}
 			</div>
-		</div>
+		</Layout>
 	);
 }

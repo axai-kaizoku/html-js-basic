@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './styles.css';
+import { Link } from 'react-router-dom';
 
 const Time = () => {
 	const [time, setTime] = useState(new Date());
@@ -38,21 +39,23 @@ const Time = () => {
 	];
 
 	const day = days[time.getDay() - 1];
-
+	const cart = [1, 2];
 	const date = time.toDateString().slice(3);
 	// console.log(min.toString().length);
 	return (
-		<div className="outer-time-div">
-			<div className="time-comp">
-				<p className="time">
-					{hrs.toString().length === 1 ? `0${hrs}` : hrs}:
-					{min.toString().length === 1 ? `0${min}` : min}:
-					{sec.toString().length === 1 ? `0${sec}` : sec}
-				</p>
-				<p className="day">{day}</p>
-				<p className="date">{date}</p>
+		<>
+			<div className="outer-time-div">
+				<div className="time-comp">
+					<p className="time">
+						{hrs.toString().length === 1 ? `0${hrs}` : hrs}:
+						{min.toString().length === 1 ? `0${min}` : min}:
+						{sec.toString().length === 1 ? `0${sec}` : sec}
+					</p>
+					<p className="day">{day}</p>
+					<p className="date">{date}</p>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 

@@ -11,6 +11,16 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.link {
+	background-color: transparent;
+	padding: 0.3rem;
+	border-radius: 0.2rem;
+}
+
+.link:hover {
+	background-color: white;
+}
+
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;

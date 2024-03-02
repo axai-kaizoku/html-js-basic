@@ -2,7 +2,6 @@ import TemperatureControl from './components/TemperatureControl';
 import Time from './components/Time';
 import Todo from './components/Todo/Todo';
 import { Routes, Route, Link } from 'react-router-dom';
-import Validate from './components/Validate';
 import Validate2 from './components/Validate2';
 import Cart from './pages/Cart';
 import Store from './pages/Store';
@@ -12,29 +11,52 @@ function App() {
 	const cart = useSelector((state) => state.cart.value);
 	return (
 		<>
-			<header>
-				<nav className="bg-transparent backdrop-blur-md shadow-2xl border-b-2 border-b-black">
+			<header className="fixed top-0 w-full">
+				<nav
+					className="bg-transparent backdrop-blur-2xl shadow-2xl "
+					id="nav-img">
 					<ul className="flex flex-row justify-evenly items-center h-10 w-full">
 						<li>
-							<Link to="/">Home</Link>
+							<Link
+								to="/"
+								className="link">
+								Home
+							</Link>
 						</li>
 						<li>
-							<Link to="todo">todo</Link>
+							<Link
+								to="todo"
+								className="link">
+								Todo
+							</Link>
 						</li>
 						<li>
-							<Link to="/temp">temp</Link>
+							<Link
+								to="/temp"
+								className="link">
+								Temp
+							</Link>
 						</li>
 						<li>
-							<Link to="/form">form</Link>
+							<Link
+								to="/form"
+								className="link">
+								Form
+							</Link>
 						</li>
 						<li>
-							<Link to="/form2">form2</Link>
+							<Link
+								to="/store"
+								className="link">
+								Store
+							</Link>
 						</li>
 						<li>
-							<Link to="/store">Store</Link>
-						</li>
-						<li>
-							<Link to="/cart">Cart ({cart.length})</Link>
+							<Link
+								to="/cart"
+								className="link">
+								Cart ({cart.length})
+							</Link>
 						</li>
 					</ul>
 				</nav>
@@ -54,10 +76,6 @@ function App() {
 				/>
 				<Route
 					path="/form"
-					element={<Validate />}
-				/>
-				<Route
-					path="/form2"
 					element={<Validate2 />}
 				/>
 				<Route
