@@ -5,7 +5,7 @@ export const storeSlice = createSlice({
 	initialState: {
 		value: [
 			{
-				id: 5,
+				id: '5',
 				name: 'Vinland Saga',
 				genre: 'history',
 				mc: 'Toriffin',
@@ -17,9 +17,12 @@ export const storeSlice = createSlice({
 		updateStore: (state, action) => {
 			state.value = [...action.payload];
 		},
+		addToStore: (state, action) => {
+			state.value.push(action.payload);
+		},
 	},
 });
 
-export const { updateStore } = storeSlice.actions;
+export const { updateStore, addToStore } = storeSlice.actions;
 
 export default storeSlice.reducer;

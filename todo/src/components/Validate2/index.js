@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './styles.css';
+import Layout from '../../pages/Layout';
 
 const Validate2 = () => {
 	const [name, setName] = useState('');
@@ -25,7 +26,7 @@ const Validate2 = () => {
 		alert('Submitted');
 	};
 	return (
-		<div className="validate">
+		<Layout className="validate">
 			<h1>Form Basic</h1>
 			<input
 				type="text"
@@ -65,7 +66,7 @@ const Validate2 = () => {
 				}}>
 				Sumbit
 			</button>
-		</div>
+		</Layout>
 	);
 };
 

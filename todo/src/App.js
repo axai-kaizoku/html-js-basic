@@ -6,6 +6,7 @@ import Validate2 from './components/Validate2';
 import Cart from './pages/Cart';
 import Store from './pages/Store';
 import { useSelector } from 'react-redux';
+import AddToStore from './pages/AddToStore';
 
 function App() {
 	const cart = useSelector((state) => state.cart.value);
@@ -13,7 +14,7 @@ function App() {
 		<>
 			<header className="fixed top-0 w-full">
 				<nav
-					className="bg-transparent backdrop-blur-2xl shadow-2xl "
+					className="bg-transparent backdrop-blur-sm shadow-2xl "
 					id="nav-img">
 					<ul className="flex flex-row justify-evenly items-center h-10 w-full">
 						<li>
@@ -53,6 +54,13 @@ function App() {
 						</li>
 						<li>
 							<Link
+								to="/addtostore"
+								className="link">
+								AddToStore
+							</Link>
+						</li>
+						<li>
+							<Link
 								to="/cart"
 								className="link">
 								Cart ({cart.length})
@@ -85,6 +93,10 @@ function App() {
 				<Route
 					path="/store"
 					element={<Store />}
+				/>
+				<Route
+					path="/addtostore"
+					element={<AddToStore />}
 				/>
 			</Routes>
 		</>
