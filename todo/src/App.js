@@ -7,6 +7,7 @@ import Cart from './pages/Cart';
 import Store from './pages/Store';
 import { useSelector } from 'react-redux';
 import AddToStore from './pages/AddToStore';
+import GenPass from './pages/Password';
 
 function App() {
 	const cart = useSelector((state) => state.cart.value);
@@ -43,6 +44,13 @@ function App() {
 								to="/form"
 								className="link">
 								Form
+							</Link>
+						</li>
+						<li>
+							<Link
+								to="/password"
+								className="link">
+								Password
 							</Link>
 						</li>
 						<li>
@@ -97,6 +105,10 @@ function App() {
 				<Route
 					path="/addtostore"
 					element={<AddToStore />}
+				/>
+				<Route
+					path="/password"
+					element={<GenPass />}
 				/>
 			</Routes>
 		</>
