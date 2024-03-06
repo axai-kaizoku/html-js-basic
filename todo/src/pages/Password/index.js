@@ -1,17 +1,49 @@
 import Layout from '../Layout';
 import { useEffect, useState } from 'react';
+import Slider from '@mui/material/Slider';
 
 export default function GenPass() {
 	const [password, setPassword] = useState('');
-	const [show, setShow] = useState(false);
 	const [copy, setCopy] = useState(false);
-	const showPassword = () => {
-		setShow(!show);
+	const [value, setValue] = useState(8);
+	const [type, setType] = useState('password');
+
+	// const [show, setShow] = useState(false);
+
+	// const showPassword = () => {
+	// 	setShow(!show);
+	// };
+
+	const genPass = () => {
+		const characters =
+			'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*?';
+		const numbers = '0123456789';
+		let generatedPassword = '';
+		for (let i = 0; i < value; i++) {
+			if (type === 'pin') {
+				const randomIn = Math.floor(Math.random() * numbers.length);
+				generatedPassword += numbers.charAt(randomIn);
+			} else {
+				const randomIndex = Math.floor(Math.random() * characters.length);
+				generatedPassword += characters.charAt(randomIndex);
+			}
+		}
+		setPassword(generatedPassword);
 	};
+
+	// Slider
+
+	const handleInputChange = (event) => {
+		setValue(event.target.value === '' ? 0 : Number(event.target.value));
+	};
+
+	// Copy btn
+
 	const handleCopy = () => {
 		navigator.clipboard.writeText(password);
 		setCopy(true);
 	};
+
 	useEffect(() => {
 		let timer;
 		if (copy) {
@@ -21,6 +53,7 @@ export default function GenPass() {
 		}
 		return () => clearTimeout(timer);
 	}, [copy]);
+
 	return (
 		<Layout>
 			{/* password: {
@@ -37,7 +70,8 @@ export default function GenPass() {
 					<h1 className="text-5xl font-light text-center">
 						Password Generator
 					</h1>
-					<div className="flex flex-col justify-center items-center m-10">
+					{/* Text area to generate password based on prompts */}
+					{/* <div className="flex flex-col justify-center items-center m-10">
 						<textarea
 							className="text-lg px-3 py-2 mb-10  border-2 border-black rounded-lg
               "
@@ -45,9 +79,10 @@ export default function GenPass() {
 							id="prompt"
 							placeholder="Write your prompt..."
 							cols="30"></textarea>
-						<button>Generate</button>
-					</div>
-					<div className="flex flex-row justify-center items-center m-10">
+						
+					</div> */}
+					{/* Input password field with show and hide btn */}
+					{/* <div className="flex flex-row justify-center items-center m-10">
 						<input
 							type={show ? 'text' : 'password'}
 							value={password}
@@ -60,8 +95,68 @@ export default function GenPass() {
 							className="border-2 border-black border-l-0 rounded-l-none  rounded-lg py-2.5 ">
 							{show ? 'Hide' : 'Show'}
 						</button>
+					</div> */}
+					<div className="flex flex-row justify-center items-center m-10">
+						<div
+							className={`border-2 flex rounded-r-none items-center justify-center ${
+								password.length >= 12
+									? 'bg-green-100'
+									: password.length >= 7
+									? 'bg-orange-100'
+									: 'bg-red-100'
+							} border-gray-900 w-[480px] h-14`}>
+							<p className="tracking-widest whitespace-nowrap font-medium text-xl">
+								{password}
+							</p>
+						</div>
+						<div className="h-14 border-4 border-black rounded-lg rounded-l-none">
+							<button
+								className="h-full rounded-l-none rounded-r-none border-r border-r-white"
+								onClick={handleCopy}>
+								{copy ? 'Copied !' : 'Copy'}
+							</button>
+							<button
+								className="h-full rounded-l-none border-l border-l-white"
+								onClick={genPass}>
+								Generate
+							</button>
+						</div>
 					</div>
-					<button onClick={handleCopy}>{copy ? 'Copied !' : 'Copy'}</button>
+					{/* Slider */}
+					<div className="flex flex-row justify-center items-center m-10">
+						<div className="w-56 flex flex-row">
+							<input
+								type="number"
+								value={value}
+								onChange={handleInputChange}
+								max={30}
+								min={4}
+								className="w-12 mx-2 p-1"
+							/>
+							<Slider
+								value={value}
+								onChange={(e) => {
+									setValue(e.target.value);
+									genPass();
+								}}
+								min={4}
+								max={30}
+								defaultValue={value}
+								aria-label="Default"
+								valueLabelDisplay="auto"
+							/>
+						</div>
+					</div>
+					<div>
+						<select
+							name="type"
+							defaultValue="password"
+							id="type"
+							onChange={(e) => setType(e.target.value)}>
+							<option value="pin">Pin</option>
+							<option value="password">Password</option>
+						</select>
+					</div>
 				</div>
 			</div>
 		</Layout>
