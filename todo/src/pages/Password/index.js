@@ -124,6 +124,16 @@ export default function GenPass() {
 					</div>
 					{/* Slider */}
 					<div className="flex flex-row justify-center items-center m-10">
+						<div className="mx-4">
+							<select
+								name="type"
+								defaultValue="password"
+								id="type"
+								onChange={(e) => setType(e.target.value)}>
+								<option value="password">Password</option>
+								<option value="pin">Pin</option>
+							</select>
+						</div>
 						<div className="w-56 flex flex-row">
 							<input
 								type="number"
@@ -131,7 +141,7 @@ export default function GenPass() {
 								onChange={handleInputChange}
 								max={30}
 								min={4}
-								className="w-12 mx-2 p-1"
+								className="w-12 mx-4 p-1"
 							/>
 							<Slider
 								value={value}
@@ -144,18 +154,9 @@ export default function GenPass() {
 								defaultValue={value}
 								aria-label="Default"
 								valueLabelDisplay="auto"
+								className="mx-1"
 							/>
 						</div>
-					</div>
-					<div>
-						<select
-							name="type"
-							defaultValue="password"
-							id="type"
-							onChange={(e) => setType(e.target.value)}>
-							<option value="pin">Pin</option>
-							<option value="password">Password</option>
-						</select>
 					</div>
 				</div>
 			</div>
